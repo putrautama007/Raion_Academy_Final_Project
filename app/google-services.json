@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "43091647464",
+    "firebase_url": "https://rachat-faec1.firebaseio.com",
+    "project_id": "rachat-faec1",
+    "storage_bucket": "rachat-faec1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:43091647464:android:187d7ecffc7c4fe7",
+        "android_client_info": {
+          "package_name": "com.example.putrautama.rachat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "43091647464-qggmt86ajbpckal7ls7p9vej5c502151.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0R7GQcVzMw_n_n0GiMK2T3TWi1dSREX4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
