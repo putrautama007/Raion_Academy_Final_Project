@@ -1,11 +1,15 @@
 package com.example.putrautama.rachat.ui.Activities;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.transition.Slide;
 
 import com.example.putrautama.rachat.R;
 import com.example.putrautama.rachat.ui.Fragment.RegisterFragment;
@@ -17,10 +21,15 @@ import com.example.putrautama.rachat.ui.Fragment.RegisterFragment;
 public class RegisterActivity extends AppCompatActivity{
     private Toolbar mToolbar;
 
-    public static void startActivity(Context context){
+    public static void startActivity(Activity activity){
+        Context context = activity;
 
         Intent intent = new Intent(context, RegisterActivity.class);
-        context.startActivity(intent);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            context.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(activity).toBundle());
+        } else {
+            context.startActivity(intent);
+        }
     }
 
     @Override
@@ -29,6 +38,10 @@ public class RegisterActivity extends AppCompatActivity{
         setContentView(R.layout.activity_register);
         bindViews();
         init();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setEnterTransition(new Slide());
+        }
     }
     private void bindViews(){
         mToolbar= findViewById(R.id.toolbar);

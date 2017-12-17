@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/RAChat.iml" filepath="$PROJECT_DIR$/RAChat.iml" />
+      <module fileurl="file://D:\RJS Files\MY PROJECT\Android Workspace\Raion_Academy_Final_Project\RAChat.iml" filepath="D:\RJS Files\MY PROJECT\Android Workspace\Raion_Academy_Final_Project\RAChat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Raion_Academy_Final_Project.iml" filepath="$PROJECT_DIR$/Raion_Academy_Final_Project.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\RJS Files\MY PROJECT\Android Workspace\Raion_Academy_Final_Project\app\app.iml" filepath="D:\RJS Files\MY PROJECT\Android Workspace\Raion_Academy_Final_Project\app\app.iml" />
     </modules>
   </component>
 </project>

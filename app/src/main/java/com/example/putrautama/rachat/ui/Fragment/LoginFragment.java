@@ -2,6 +2,8 @@ package com.example.putrautama.rachat.ui.Fragment;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.media.Image;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.putrautama.rachat.R;
@@ -29,6 +32,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Log
     private Button mBtnLogin, mBtnRegister;
 
     private ProgressDialog mProgressDialog;
+    private ImageView imageLogo;
 
     public static LoginFragment newInstance() {
         Bundle args = new Bundle();
@@ -42,6 +46,16 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Log
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View fragmentView = inflater.inflate(R.layout.fragment_login, container, false);
         bindViews(fragmentView);
+        imageLogo = fragmentView.findViewById(R.id.imageLogo);
+
+        String transitionName = "my-transition";
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            imageLogo.setTransitionName(transitionName);
+        }
+
+        getActivity().supportStartPostponedEnterTransition();
+
         return fragmentView;
     }
 
@@ -95,8 +109,10 @@ public class LoginFragment extends Fragment implements View.OnClickListener, Log
         String emailId = mETxtEmail.getText().toString();
         String password = mETxtPassword.getText().toString();
 
-        mLoginPresenter.login(getActivity(), emailId, password);
-        mProgressDialog.show();
+        if (!emailId.isEmpty() && !password.isEmpty()) {
+            mLoginPresenter.login(getActivity(), emailId, password);
+            mProgressDialog.show();
+        }
     }
 
     private void onRegister(View view) {

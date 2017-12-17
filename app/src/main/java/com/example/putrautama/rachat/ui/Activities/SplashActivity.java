@@ -1,8 +1,13 @@
 package com.example.putrautama.rachat.ui.Activities;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.Explode;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.example.putrautama.rachat.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,6 +27,8 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        final ImageView logoImage = findViewById(R.id.logo);
+
         mHandler = new Handler();
 
         mRunnable = new Runnable() {
@@ -33,9 +40,22 @@ public class SplashActivity extends AppCompatActivity {
                     UserListingActivity.startActivity(SplashActivity.this);
                 } else {
                     // otherwise redirect the user to login activity
-                    LoginActivity.startIntent(SplashActivity.this);
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        String transitionName = "my-transition";
+                        logoImage.setTransitionName(transitionName);
+                        ActivityOptionsCompat options =
+                                ActivityOptionsCompat.makeSceneTransitionAnimation(SplashActivity.this,
+                                        (View) logoImage,
+                                        transitionName);
+                        LoginActivity.startIntent(SplashActivity.this, options);
+
+                    } else {
+
+                        LoginActivity.startIntent(SplashActivity.this);
+                    }
                 }
-                finish();
+                //finish();
             }
         };
 
